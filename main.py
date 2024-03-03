@@ -6,9 +6,10 @@ import os
 def set_alarm():
     hour = int(entry_1.get())
     minute = int(entry_2.get())
+    second = int(entry_3.get())
 
     now = datetime.datetime.now()
-    alarm_time = datetime.datetime.combine(now.date(),datetime.time(hour,minute))
+    alarm_time = datetime.datetime.combine(now.date(),datetime.time(hour,minute,second))
 
     time.sleep((alarm_time - now).total_seconds())
 
@@ -33,6 +34,14 @@ label_2.pack()
 entry_2 = Entry()
 entry_2.config(width=30)
 entry_2.pack()
+
+label_3 = Label()
+label_3.config(text="Set Second")
+label_3.pack()
+
+entry_3 = Entry()
+entry_3.config(width=30)
+entry_3.pack()
 
 button_1 = Button()
 button_1.config(text="Set Time",command=set_alarm)
